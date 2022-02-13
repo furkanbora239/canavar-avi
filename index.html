@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <link rel="stylesheet" href="app.css">
+    <title>canavar avi</title>
+</head>
+<body>
+    <div id="app">
+        <table class="genel">
+            <tr> <!--can kutuları adlar -->
+                <th>
+                    <section>
+                        <table class="section">
+                            <tr>
+                                <th class="can_kutusu"><div>
+                                    <h1>SEN</h1>
+                                    <div class="prosesBar" :style="{width: can+'%'}">%{{can}}</div>
+                                </div></th>
+                                <th class="can_kutusu"><div>
+                                    <h1>CANAVAR</h1>
+                                    <div class="prosesBar" :style="{width: c_can+'%'}" >%{{c_can}}</div>
+                                </div></th>
+                            </tr>
+                        </table>
+                    </section> <br>
+                </th>
+            </tr>
+
+
+            <tr> <!--yeni oyun buttonu -->
+                <th>
+                    <section  v-show="show">
+                        <div><button style="background-color: greenyellow;" @click="{{ng}}">Yeni Oyun</button></div>
+                    </section> <br>
+                </th>
+            </tr>
+
+
+            <tr> <!-- saldırı tuşları -->
+                <th>
+                    <section  v-show="!show">
+                        <div>
+                            <table class="section">
+                                <tr>
+                                    <th><button style="background-color: red;" @click="saldır()">saldırı</button></th>
+                                    <th><button style="background-color: sandybrown;" @click="os()">özel saldırı({{ost}})</button></th>
+                                    <th><button style="background-color: greenyellow;" @click="heal()">heal</button></th>
+                                    <th><button @click="peset()">pes et</button></th>
+                                </tr>
+                            </table>
+                        </div>
+                    </section> <br>
+                </th>
+            </tr>
+
+            
+            <tr>   <!--array bölümü -->
+                <th>
+                    <section v-show="!show" v-if="array.length > 0">
+                        <div class="section" >
+                            <ul>
+                                <li class="li_all"
+                                v-for="name in array" 
+                                :class="{ 'p' : name.id == 'p','m' : name.id == 'm'}">
+                                    {{name.text}}
+                                </li>
+                            </ul></div> 
+                    </section> <br>
+                </th>
+            </tr>
+        </table>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
